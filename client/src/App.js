@@ -25,7 +25,9 @@ class App extends Component {
       lng: -0.09
     },
     haveUsersLocation: false,
-    zoom: 1
+    zoom: 1,
+    totalwarn: 0,
+    totaldanger: 0
   };
 
   componentDidMount() {
@@ -59,15 +61,12 @@ class App extends Component {
     );
   }
 
-  addDangerCase = event => {
-    event.preventDefault();
-    console.log("danger button clicked");
-  };
-
-  addWarningCase = event => {
-    event.preventDefault();
-    console.log("warning button clicked");
-  };
+  addWarningCase() {
+    console.log("warning case added");
+  }
+  addDangerCase() {
+    console.log("danger case added");
+  }
 
   render() {
     const position = [this.state.location.lat, this.state.location.lng];
@@ -98,7 +97,7 @@ class App extends Component {
             <CardText>heatzones based based on self reported data</CardText>
             <Button
               disabled={!this.state.haveUsersLocation}
-              onClick="addDangerCase=()"
+              onClick={this.addDangerCase}
               className="btn"
               color="danger"
             >
@@ -106,7 +105,7 @@ class App extends Component {
             </Button>
             <Button
               disabled={!this.state.haveUsersLocation}
-              onClick="addWarningCase=()"
+              onClick={this.addWarningCase}
               className="btn"
               color="warning"
             >
